@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>PaintbrushJS Playground</title>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" src="../lib/jquery.colorize.0.4.js"></script>
+
+        <script type="text/javascript">
+            //$.noConflict();
+            
+            jQuery(document).ready(function($) {
+                
+                if (location.src.indexOf('http') === false) {
+                    alert('This demo does not run if executed as a local file(e.g. file:///), but only runs if requested from a web server (e.g. http://localhost or http://www.yourdomain.com). Please see the working demo at http://ideas.evernew.it');
+                    
+                } else {
+                        
+                    var effects = ['greyscale','greyscale-0.3',
+                                    'emboss','tint-#ff0000-0.2',
+                                    'mosaic'],
+                        z=0;
+                    
+                    
+                    $('img').each(function(){
+                        var $this = $(this);
+                        $this.wrap('<div />').after('<button class="'+effects[z]+'" />').next().click(function(){
+                            var $this = $(this);
+                            $this.prev().toggleClass('colorize-'+$this.attr('class'));
+                        }).html(effects[z]);
+                        
+                        z++;
+                    });
+                }
+                
+            });                
+        </script>
+
+    </head>
+    <body>
+          
+        <img src="images/bee.jpg">
+        <img src="images/jordan.jpg">
+        <img src="images/leaves.jpg">
+        <img src="images/lighthouse.jpg">
+        <img src="images/louvre.jpg">
+        <img src="images/road.jpg">
+        <img src="images/sign.jpg">
+        <img src="images/staples.jpg">
+        <img src="images/stones.jpg">
+
+    </body>
+</html>
